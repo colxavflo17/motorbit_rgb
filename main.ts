@@ -1,6 +1,9 @@
 function led2 () {
     basic.showIcon(IconNames.Square)
     basic.showIcon(IconNames.SmallSquare)
+    motorbit.RUS_04(RgbUltrasonics.All, RgbColors.Red, ColorEffect.None)
+    basic.pause(100)
+    motorbit.RUS_04(RgbUltrasonics.All, RgbColors.Black, ColorEffect.None)
 }
 function led22 () {
     LED1.showColor(neopixel.colors(NeoPixelColors.Red))
@@ -17,8 +20,12 @@ function led22 () {
     LED4.clear()
 }
 function servo () {
-    motorbit.Servospeed(motorbit.Servos.S1, 0, 180, 10)
-    basic.pause(5000)
+    for (let index = 0; index < 4; index++) {
+        basic.pause(1000)
+        motorbit.Servo(motorbit.Servos.S1, 90)
+        basic.pause(1000)
+        motorbit.GeekServo(motorbit.Servos.S1, 0)
+    }
 }
 let LED4: neopixel.Strip = null
 let LED3: neopixel.Strip = null
